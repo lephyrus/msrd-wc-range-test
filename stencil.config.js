@@ -1,12 +1,12 @@
 exports.config = {
-  namespace: 'mycomponent',
+  namespace: 'msrd-wc-range-test',
   generateDistribution: true,
   bundles: [
-    { components: ['my-component'] }
+    { components: ['msrd-range-test'] }
   ]
 };
 
 exports.devServer = {
   root: 'www',
   watchGlob: '**/**'
-}
+};

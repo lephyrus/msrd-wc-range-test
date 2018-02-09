@@ -6,32 +6,34 @@
 
 
 import {
-  MyComponent as MyComponent
-} from './components/my-component/my-component';
+  RangeTest as MsrdRangeTest
+} from './components/range-test/range-test';
 
 declare global {
-  interface HTMLMyComponentElement extends MyComponent, HTMLElement {
+  interface HTMLMsrdRangeTestElement extends MsrdRangeTest, HTMLElement {
   }
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  var HTMLMsrdRangeTestElement: {
+    prototype: HTMLMsrdRangeTestElement;
+    new (): HTMLMsrdRangeTestElement;
   };
   interface HTMLElementTagNameMap {
-    "my-component": HTMLMyComponentElement;
+    "msrd-range-test": HTMLMsrdRangeTestElement;
   }
   interface ElementTagNameMap {
-    "my-component": HTMLMyComponentElement;
+    "msrd-range-test": HTMLMsrdRangeTestElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "my-component": JSXElements.MyComponentAttributes;
+      "msrd-range-test": JSXElements.MsrdRangeTestAttributes;
     }
   }
   namespace JSXElements {
-    export interface MyComponentAttributes extends HTMLAttributes {
-      first?: string;
-      last?: string;
+    export interface MsrdRangeTestAttributes extends HTMLAttributes {
+      max?: number;
+      min?: number;
+      value?: number;
     }
   }
 }
 
+declare global { namespace JSX { interface StencilJSX {} } }
