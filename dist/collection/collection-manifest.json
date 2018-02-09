@@ -1,0 +1,65 @@
+{
+  "components": [
+    {
+      "tag": "msrd-range-test",
+      "componentClass": "RangeTest",
+      "componentPath": "components/range-test/range-test.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/range-test/range-test.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "max",
+          "type": "Number",
+          "watch": [
+            "watchMax"
+          ]
+        },
+        {
+          "name": "min",
+          "type": "Number",
+          "watch": [
+            "watchMin"
+          ]
+        },
+        {
+          "name": "value",
+          "type": "Number",
+          "watch": [
+            "watchValue"
+          ]
+        }
+      ],
+      "states": [
+        {
+          "name": "state"
+        }
+      ],
+      "hostElement": {
+        "name": "host"
+      },
+      "events": [
+        {
+          "event": "change"
+        }
+      ],
+      "shadow": true
+    }
+  ],
+  "bundles": [
+    {
+      "components": [
+        "msrd-range-test"
+      ]
+    }
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.2.3",
+    "typescriptVersion": "2.7.1"
+  }
+}
