@@ -29,31 +29,35 @@ export class RangeTest {
   }
 
   @Event() public change: EventEmitter<number>;
-  @Event() public lifeCycle: EventEmitter<string>;
+  @Event() public willLoad: EventEmitter<string>;
+  @Event() public didLoad: EventEmitter<string>;
+  @Event() public willUpdate: EventEmitter<string>;
+  @Event() public didUpdate: EventEmitter<string>;
+  @Event() public didUnload: EventEmitter<string>;
 
   public componentWillLoad() {
     console.log('[wc:range]', 'The component is about to be rendered');
-    this.lifeCycle.emit('willLoad');
+    this.willLoad.emit('willLoad');
   }
 
   public componentDidLoad() {
     console.log('[wc:range]', 'The component has been rendered');
-    this.lifeCycle.emit('didLoad');
+    this.didLoad.emit('didLoad');
   }
 
   public componentWillUpdate() {
     console.log('[wc:range]', 'The component will update');
-    this.lifeCycle.emit('willUpdate');
+    this.willUpdate.emit('willUpdate');
   }
 
   public componentDidUpdate() {
     console.log('[wc:range]', 'The component did update');
-    this.lifeCycle.emit('didUpdate');
+    this.didUpdate.emit('didUpdate');
   }
 
   public componentDidUnload() {
     console.log('[wc:range]', 'The view has been removed from the DOM');
-    this.lifeCycle.emit('didUnload');
+    this.didUnload.emit('didUnload');
   }
 
   private changeValue(value: number, notify: boolean = false): void {

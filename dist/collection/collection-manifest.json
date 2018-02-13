@@ -47,7 +47,19 @@
           "event": "change"
         },
         {
-          "event": "lifeCycle"
+          "event": "didLoad"
+        },
+        {
+          "event": "didUnload"
+        },
+        {
+          "event": "didUpdate"
+        },
+        {
+          "event": "willLoad"
+        },
+        {
+          "event": "willUpdate"
         }
       ],
       "shadow": true
