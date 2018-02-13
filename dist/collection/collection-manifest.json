@@ -45,6 +45,9 @@
       "events": [
         {
           "event": "change"
+        },
+        {
+          "event": "lifeCycle"
         }
       ],
       "shadow": true
