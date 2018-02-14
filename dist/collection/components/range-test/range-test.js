@@ -65,8 +65,9 @@ export class RangeTest {
             console.info('[wc:range]', 'emit change', state.value);
             this.change.emit(state.value);
         }
-        const narrowRange = Math.abs(state.max - state.min) > 4;
+        const narrowRange = Math.abs(state.max - state.min) < 4;
         if (this.narrowRange !== narrowRange) {
+            console.info('[wc:range]', 'emit narrow', narrowRange);
             this.narrow.emit(narrowRange);
         }
         this.narrowRange = narrowRange;
