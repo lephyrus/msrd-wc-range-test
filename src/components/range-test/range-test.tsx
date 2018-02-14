@@ -29,11 +29,15 @@ export class RangeTest {
   }
 
   @Event() public change: EventEmitter<number>;
+  @Event() public narrow: EventEmitter<boolean>;
+
   @Event() public willLoad: EventEmitter<string>;
   @Event() public didLoad: EventEmitter<string>;
   @Event() public willUpdate: EventEmitter<string>;
   @Event() public didUpdate: EventEmitter<string>;
   @Event() public didUnload: EventEmitter<string>;
+
+  private narrowRange: boolean = false;
 
   public componentWillLoad() {
     console.log('[wc:range]', 'The component is about to be rendered');
@@ -96,6 +100,12 @@ export class RangeTest {
       console.info('[wc:range]', 'emit change', state.value);
       this.change.emit(state.value);
     }
+
+    const narrowRange = Math.abs(state.max - state.min) > 4;
+    if (this.narrowRange !== narrowRange) {
+      this.narrow.emit(narrowRange);
+    }
+    this.narrowRange = narrowRange;
   }
 
   private increment(): void {

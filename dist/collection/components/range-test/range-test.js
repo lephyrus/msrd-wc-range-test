@@ -1,6 +1,7 @@
 export class RangeTest {
     constructor() {
         this.state = { value: 1, min: 0, max: 5 };
+        this.narrowRange = false;
     }
     watchValue(value) {
         this.changeValue(value);
@@ -64,6 +65,11 @@ export class RangeTest {
             console.info('[wc:range]', 'emit change', state.value);
             this.change.emit(state.value);
         }
+        const narrowRange = Math.abs(state.max - state.min) > 4;
+        if (this.narrowRange !== narrowRange) {
+            this.narrow.emit(narrowRange);
+        }
+        this.narrowRange = narrowRange;
     }
     increment() {
         this.changeValue(this.state.value + 1, true);
@@ -80,6 +86,6 @@ export class RangeTest {
     static get is() { return "msrd-range-test"; }
     static get encapsulation() { return "shadow"; }
     static get properties() { return { "host": { "elementRef": true }, "max": { "type": Number, "attr": "max", "watchCallbacks": ["watchMax"] }, "min": { "type": Number, "attr": "min", "watchCallbacks": ["watchMin"] }, "state": { "state": true }, "value": { "type": Number, "attr": "value", "watchCallbacks": ["watchValue"] } }; }
-    static get events() { return [{ "name": "change", "method": "change", "bubbles": true, "cancelable": true, "composed": true }, { "name": "willLoad", "method": "willLoad", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didLoad", "method": "didLoad", "bubbles": true, "cancelable": true, "composed": true }, { "name": "willUpdate", "method": "willUpdate", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didUpdate", "method": "didUpdate", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didUnload", "method": "didUnload", "bubbles": true, "cancelable": true, "composed": true }]; }
+    static get events() { return [{ "name": "change", "method": "change", "bubbles": true, "cancelable": true, "composed": true }, { "name": "narrow", "method": "narrow", "bubbles": true, "cancelable": true, "composed": true }, { "name": "willLoad", "method": "willLoad", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didLoad", "method": "didLoad", "bubbles": true, "cancelable": true, "composed": true }, { "name": "willUpdate", "method": "willUpdate", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didUpdate", "method": "didUpdate", "bubbles": true, "cancelable": true, "composed": true }, { "name": "didUnload", "method": "didUnload", "bubbles": true, "cancelable": true, "composed": true }]; }
     static get style() { return "/**style-placeholder:msrd-range-test:**/"; }
 }
